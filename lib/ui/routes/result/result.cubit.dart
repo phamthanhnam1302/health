@@ -15,7 +15,7 @@ class ResultCubit extends Cubit<ResultState> {
     emit(state.copyWith(status: 1));
     try {
       final response = await _dio.post(
-        '/',
+        '/detect',
         data: FormData.fromMap({
           'img': MultipartFile.fromFile(path),
         }),
