@@ -13,7 +13,10 @@ class ResultCubit extends Cubit<ResultState> {
   final _dio = Dio(BaseOptions(
     baseUrl: dotenv.env['URL'] ?? '',
   ))
-    ..interceptors.add(LogInterceptor())
+    ..interceptors.add(LogInterceptor(
+      requestBody: true,
+      responseBody: true,
+    ))
     ..httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
         return HttpClient()
